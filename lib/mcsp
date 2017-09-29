@@ -1,0 +1,23 @@
+rm cscope.files
+find . -name SCCS -prune -o \
+-name 'sparc' -prune -o \
+-name 'mips' -prune -o \
+-name 'alpha' -prune -o \
+-name 'm68k' -prune -o \
+-name 'ppc' -prune -o \
+-name 'arm' -prune -o \
+-name 'v390' -prune -o \
+-type d -name 'Codemgr_wsdata' -prune -o \
+-type d -name 'sh' -prune -o \
+-type d -name 'drv' -prune -o \
+-type d -name '.del-*' -prune -o \
+-type d -name 'deleted_files' -prune -o \
+-type d -name 'sbus' -prune -o \
+-type d -name 's390' -prune -o \
+-type f \( -name '*.[csSh]' -o -name 'Makefile*' -o -name '*.il' \) \
+-print > cscope.files.raw
+grep -v Makefile cscope.files.raw >> cscope.files
+grep Makefile cscope.files.raw >> cscope.files
+rm cscope.files.raw
+cscope -b
+ctags -L cscope.files

@@ -11,6 +11,10 @@
 *.ilk
 *.map
 *.exp
+#cscope
+*.files
+*.out
+tags
 
 # Precompiled Headers
 *.gch
